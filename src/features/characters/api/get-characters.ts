@@ -1,4 +1,4 @@
-import { characterMapper } from "@/shared/helpers/character-mapper";
+import { characterMapper } from "@/features/characters/helpers/character-mapper";
 import type { ApiCharacter, Character } from "@/shared/types/character";
 
 interface GetCharacterParams {
@@ -8,8 +8,8 @@ interface GetCharacterParams {
   interface CharacterInfo {
     count: number;
     pages: number;
-    next: string;
-    prev: string;
+    next: string | null;
+    prev: string | null;
   }
   
  interface GetApiResponse {
@@ -17,7 +17,7 @@ interface GetCharacterParams {
     results: ApiCharacter[];
  }
 
- interface GetCharactersResponse extends Pick<GetApiResponse, 'info'> {
+export interface GetCharactersResponse extends Pick<GetApiResponse, 'info'> {
     results: Character[];
 }
   

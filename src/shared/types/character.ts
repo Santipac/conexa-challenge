@@ -1,4 +1,5 @@
 export interface ApiCharacter {
+    id: number;
     name: string;
     image: string;
     status: CharacterStatus
