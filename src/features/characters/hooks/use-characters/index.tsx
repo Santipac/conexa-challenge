@@ -1,12 +1,13 @@
 "use client";
 
 import { getCharacters } from "@/features/characters/api/get-characters";
+import { useCharactersList } from "@/shared/stores/use-characters-list";
 import type { Character } from "@/shared/types/character";
 import { useEffect, useRef, useState } from "react";
 
 export function useCharacters() {
   const [isPending, setIsPending] = useState(true);
-  const [characters, setCharacters] = useState<Character[]>([]);
+  const { characters, setCharacters } = useCharactersList();
   const [error, setError] = useState<string | null>(null);
 
   const totalPages = useRef(0);
