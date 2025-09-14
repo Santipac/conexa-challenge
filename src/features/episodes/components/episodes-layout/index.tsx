@@ -46,7 +46,7 @@ export default function EpisodesLayout() {
         setEpisodes(episodeMap);
       } catch (err) {
         const errorMessage =
-          err instanceof Error ? err.message : "An unexpected error occurred";
+          err instanceof Error ? err.message : "Ocurrió un error inesperado al obtener los episodios";
         setError(errorMessage);
       } finally {
         setLoading(false);
@@ -62,7 +62,7 @@ export default function EpisodesLayout() {
   return (
     <section className="bg-accent border rounded-lg p-4 shadow flex flex-col md:grid md:grid-cols-3 gap-4">
       <EpisodeAccordion
-        title={`${firstCharacter.name} - Episodes`}
+        title={`${firstCharacter.name} - Episodios`}
         episodes={firstCharacter.episodes}
         episodeMap={episodes}
         loading={loading}
@@ -74,7 +74,7 @@ export default function EpisodesLayout() {
         defaultValue="item-1"
       />
       <EpisodeAccordion
-        title="Character #1 and #2 - Shared Episodes"
+        title="Personaje #1 y #2 - Episodios compartidos"
         episodes={sharedEpisodes}
         episodeMap={episodes}
         loading={loading}
@@ -86,7 +86,7 @@ export default function EpisodesLayout() {
         defaultValue="item-1"
       />
       <EpisodeAccordion
-        title={`${secondCharacter.name} - Episodes`}
+        title={`${secondCharacter.name} - Episodios`}
         episodes={secondCharacter.episodes}
         episodeMap={episodes}
         loading={loading}

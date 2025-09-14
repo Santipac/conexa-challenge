@@ -29,7 +29,7 @@ export interface GetCharactersResponse extends Pick<GetApiResponse, 'info'> {
       );
 
       if (!response.ok) {
-        throw new Error(`Failed to fetch characters: ${response.status} ${response.statusText}`);
+        throw new Error(`Fallo al obtener los personajes: ${response.status} ${response.statusText}`);
       }
 
       const data = (await response.json()) as GetApiResponse;
@@ -41,9 +41,9 @@ export interface GetCharactersResponse extends Pick<GetApiResponse, 'info'> {
       };
     } catch (error) {
       if (error instanceof Error) {
-        throw new Error(`Error fetching characters: ${error.message}`);
+        throw new Error(`Error al obtener los personajes: ${error.message}`);
       }
-      throw new Error('An unexpected error occurred while fetching characters');
+      throw new Error('Ocurrió un error inesperado al obtener los personajes');
     }
   }
   

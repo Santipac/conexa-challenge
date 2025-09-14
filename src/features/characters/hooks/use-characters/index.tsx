@@ -21,7 +21,7 @@ export function useCharacters() {
       setCharacters(characters.results);
       totalPages.current = characters.info.pages;
     } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : 'An unexpected error occurred';
+      const errorMessage = error instanceof Error ? error.message : 'Ocurrió un error inesperado al obtener los personajes';
       setError(errorMessage);
       setCharacters([]);
     } finally {

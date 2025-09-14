@@ -97,7 +97,7 @@ describe("CharacterList", () => {
     it("should render character list with correct title", () => {
       render(<CharacterList {...defaultProps} />);
       
-      expect(screen.getByRole("heading")).toHaveTextContent("Choose your character #1");
+      expect(screen.getByRole("heading")).toHaveTextContent("Elige tu personaje #1");
     });
 
     it("should render loading state", async () => {

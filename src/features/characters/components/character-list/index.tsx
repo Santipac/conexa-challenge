@@ -39,7 +39,7 @@ export default function CharacterList({
   if (error) {
     return (
       <section className="h-[45dvh] md:h-[35dvh] flex-1 flex flex-col justify-between gap-2 bg-red-50 outline-destructive outline-2 rounded-lg p-4 shadow overflow-hidden">
-        <TypographyH2>Choose your character #{step}</TypographyH2>
+        <TypographyH2>Elige tu personaje #{step}</TypographyH2>
         <section className="flex flex-col gap-4 items-center justify-center mt-8">
           <XCircle className="w-16 h-16 text-red-500" />
           <TypographyP classNames="text-center text-lg leading-5 font-medium">
@@ -52,7 +52,7 @@ export default function CharacterList({
           variant="destructive"
           onClick={onRetry}
         >
-          Retry
+          Reintentar
         </Button>
       </section>
     );
@@ -60,7 +60,7 @@ export default function CharacterList({
 
   return (
     <section className="flex-1 flex flex-col gap-2 bg-card border rounded-lg p-4 shadow overflow-hidden">
-      <TypographyH2>Choose your character #{step}</TypographyH2>
+      <TypographyH2>Elige tu personaje #{step}</TypographyH2>
       {isPending ? (
         <section className="m-2.5 grid grid-cols-1 lg:grid-cols-2 gap-2">
           {Array.from({ length: 4 }).map((_) => (
@@ -121,7 +121,7 @@ export default function CharacterList({
           {step === 2 && (
             <Button size="lg" onClick={() => setStep(1)}>
               <ChevronLeftIcon className="w-4 h-4" />
-              <span>Previous step</span>
+              <span>Paso anterior</span>
             </Button>
           )}
           {step === 1 && (
@@ -130,7 +130,7 @@ export default function CharacterList({
               onClick={() => setStep(2)}
               disabled={firstCharacter === null}
             >
-              <span>{step === 1 ? "Next step" : "Continue"}</span>
+              <span>{step === 1 ? "Siguiente paso" : "Continuar"}</span>
               <ChevronRightIcon className="w-4 h-4" />
             </Button>
           )}

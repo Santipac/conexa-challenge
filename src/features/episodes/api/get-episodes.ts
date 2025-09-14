@@ -28,7 +28,7 @@ export async function getEpisodes(episodeUrls: string[]): Promise<GetEpisodesRes
 
     if (!response.ok) {
       throw new Error(
-        `Failed to fetch episodes: ${response.status} ${response.statusText}`
+        `Fallo al obtener los episodios: ${response.status} ${response.statusText}`
       );
     }
 
@@ -39,8 +39,8 @@ export async function getEpisodes(episodeUrls: string[]): Promise<GetEpisodesRes
     return episodes.map(episodeMapper);
   } catch (error) {
     if (error instanceof Error) {
-      throw new Error(`Error fetching episodes: ${error.message}`);
+      throw new Error(`Error al obtener los episodios: ${error.message}`);
     }
-    throw new Error("An unexpected error occurred while fetching episodes");
+    throw new Error("Ocurrió un error inesperado al obtener los episodios");
   }
 }

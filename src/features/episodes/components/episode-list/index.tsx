@@ -66,7 +66,7 @@ export default function EpisodeList({
           ))}
           {shouldShowButton && (
             <Button variant="ghost" onClick={() => setShowAll(!showAll)} size="lg">
-              {showAll ? "Show less" : `Show all (${episodes.length})`}
+              {showAll ? "Ver menos" : `Ver todo (${episodes.length})`}
             </Button>
           )}
         </AccordionContent>
