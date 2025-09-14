@@ -21,10 +21,16 @@ export default function EpisodesItem({ episode, loading, error }: EpisodesItemPr
       </section>
     );
 
+  const airDate = new Date(episode.airDate).toLocaleDateString("es-ES", {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+
   return (
     <section className="flex items-center justify-between flex-wrap gap-2 bg-card p-4 rounded-lg border shadow">
       <CardTitle>{episode.name}</CardTitle>
-      <CardDescription>{episode.airDate}</CardDescription>
+      <CardDescription>{airDate}</CardDescription>
     </section>
   );
 }

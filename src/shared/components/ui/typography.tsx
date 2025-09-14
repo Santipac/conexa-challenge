@@ -2,7 +2,7 @@ import { cn } from "@/shared/lib/utils";
 
 export function TypographyH1({ children, classNames }: { children: React.ReactNode, classNames?: string }) {
   return (
-    <h1 className={cn("scroll-m-20 text-center text-4xl font-extrabold tracking-tight text-balance", classNames)}>
+    <h1 className={cn("scroll-m-20 text-center text-3xl font-extrabold tracking-tight text-balance", classNames)}>
       {children}
     </h1>
   );
