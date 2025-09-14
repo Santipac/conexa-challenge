@@ -30,7 +30,7 @@ export default function ConvLayout({
     try {
       await navigator.mediaDevices.getUserMedia({ audio: true });
       await conversation.startSession({
-        agentId: "agent_4101k54t8rwfe4br7da42ez3kn3t", 
+        agentId: "agent_9001k54xcakyfnpvfh2rnmwxjenf", 
         // The agentId should be stored in an environment variable, but for your local testing I decided to hardcode it. It's part of a free plan, so don't worry about the costs.
         connectionType: "websocket",
       });
