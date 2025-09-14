@@ -27,16 +27,23 @@ export interface GetCharactersResponse extends Pick<GetApiResponse, 'info'> {
       const response = await fetch(
         `https://rickandmortyapi.com/api/character?page=${params.page}`,
       );
+
+      if (!response.ok) {
+        throw new Error(`Failed to fetch characters: ${response.status} ${response.statusText}`);
+      }
+
       const data = (await response.json()) as GetApiResponse;
       const characters = data.results.map(characterMapper);
-  
+
       return {
         results: characters,
         info: data.info,
       };
     } catch (error) {
-      console.error(error);
-      throw error;
+      if (error instanceof Error) {
+        throw new Error(`Error fetching characters: ${error.message}`);
+      }
+      throw new Error('An unexpected error occurred while fetching characters');
     }
   }
   
