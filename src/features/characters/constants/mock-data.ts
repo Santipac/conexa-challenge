@@ -18,13 +18,17 @@ export const secondMockCharacter: Character = {
 }
 
 export const mockApiCharacter: ApiCharacter = {
-    ...mockCharacter,
+    id: 1,
+    name: "Rick Sanchez",
+    image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
+    status: "Alive",
+    species: "Human",
+    episode: ["https://rickandmortyapi.com/api/episode/1", "https://rickandmortyapi.com/api/episode/2"],
     created: "2025-01-01",
 }
 
-
 export const mockCharactersResponse: GetCharactersResponse = {
-    results: [mockApiCharacter, secondMockCharacter],
+    results: [mockCharacter, secondMockCharacter],
     info: {
         count: 1,
         pages: 1,

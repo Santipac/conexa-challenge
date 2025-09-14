@@ -92,7 +92,7 @@ describe("CharacterItem", () => {
 
       const badge = screen.getByTestId("badge");
       expect(badge).toHaveClass("bg-emerald-100");
-      expect(badge).toHaveTextContent("Alive");
+      expect(badge).toHaveTextContent("Vivo");
     });
 
     it('should render "destructive" variant for Dead status', () => {
@@ -101,7 +101,7 @@ describe("CharacterItem", () => {
 
       const badge = screen.getByTestId("badge");
       expect(badge).toHaveClass("bg-destructive");
-      expect(badge).toHaveTextContent("Dead");
+      expect(badge).toHaveTextContent("Muerto");
     });
 
     it('should render "secondary" variant for unknown status', () => {
@@ -110,7 +110,7 @@ describe("CharacterItem", () => {
 
       const badge = screen.getByTestId("badge");
       expect(badge).toHaveClass("bg-secondary");
-      expect(badge).toHaveTextContent("unknown");
+      expect(badge).toHaveTextContent("Desconocido");
     });
   });
 });

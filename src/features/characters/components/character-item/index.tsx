@@ -32,6 +32,32 @@ export default function CharacterItem({
     }
   }, [character.status]);
 
+
+  const translatedStatus = useCallback(() => {
+    switch (character.status) {
+      case "Alive":
+        return "Vivo";
+      case "Dead":
+        return "Muerto";
+      default:
+        return "Desconocido";
+    }
+  }, [character.status]);
+
+  const translatedSpecies = useCallback(() => {
+    switch (character.species) {
+      case "Human":
+        return "Humano";
+      case "Humanoid":
+        return "Humanoide";
+      case "unknown":
+        return "Desconocido";
+      //? There are more species, but the API Documentation doesn't provide them
+      default:
+        return character.species;
+    }
+  }, [character.species]);
+  
   function handleOnSelect() {
     if (isDisabled) return;
     onSelect(character);
@@ -62,9 +88,9 @@ export default function CharacterItem({
         <section className="flex flex-col gap-2">
           <CardTitle>{character.name}</CardTitle>
           <section className="flex gap-1">
-            <Badge variant={statusColor()}>{character.status}</Badge>
+            <Badge variant={statusColor()}>{translatedStatus()}</Badge>
             <span className="text-muted-foreground">-</span>
-            <TypographyP>{character.species}</TypographyP>
+            <TypographyP>{translatedSpecies()}</TypographyP>
           </section>
         </section>
       </section>
