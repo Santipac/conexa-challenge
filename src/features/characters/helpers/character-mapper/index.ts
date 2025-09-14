@@ -8,6 +8,6 @@ export const characterMapper = (character: ApiCharacter): Character => {
         image: character.image,
         status: character.status,
         species: character.species,
-        episodes: character.episodes
+        episodes: character.episode
     }
 }

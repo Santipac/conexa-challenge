@@ -3,7 +3,7 @@ export interface ApiCharacter {
     name: string;
     image: string;
     status: CharacterStatus
-    episodes: string[]
+    episode: string[]
     species: string
     created: string
     //? There are more fields, but we don't need them for the requirements of the challenge
@@ -11,5 +11,7 @@ export interface ApiCharacter {
 
 export type CharacterStatus = 'Alive' | 'Dead' | 'unknown';
 
-export type Character = Omit<ApiCharacter, 'created'>;
+export interface Character extends Omit<ApiCharacter, 'created' | 'episode'> {
+    episodes: string[]
+}
     
