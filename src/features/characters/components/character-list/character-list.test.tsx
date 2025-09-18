@@ -40,7 +40,7 @@ vi.mock("@/shared/components/ui/button", () => ({
     onClick?: () => void;
     disabled?: boolean;
   }) => (
-    <button onClick={onClick} disabled={disabled}>
+    <button type="button" onClick={onClick} disabled={disabled}>
       {children}
     </button>
   ),
@@ -123,7 +123,7 @@ describe("CharacterList", () => {
       render(<CharacterList {...defaultProps} />);
 
       expect(screen.getByText("Failed to fetch characters")).toBeInTheDocument();
-      expect(screen.getByRole("button", { name: /retry/i })).toBeInTheDocument();
+      expect(screen.getByRole("button", { name: /reintentar/i })).toBeInTheDocument();
     });
 
     it("should render character items when loaded", () => {
@@ -172,8 +172,8 @@ describe("CharacterList", () => {
     it("should handle pagination navigation", () => {
       render(<CharacterList {...defaultProps} />);
 
-      const nextButton = screen.getByTestId("chevron-right-icon").closest("button");
-      fireEvent.click(nextButton!);
+      const nextButton = screen.getByTestId("chevron-right-icon");
+      fireEvent.click(nextButton);
 
       expect(mockUseCharacters.handleOnNextPage).toHaveBeenCalledTimes(1);
     });
@@ -190,14 +190,14 @@ describe("CharacterList", () => {
     it("should show mobile navigation when isMobile is true", () => {
       render(<CharacterList {...defaultProps} isMobile={true} step={2} />);
 
-      expect(screen.getByText("Previous step")).toBeInTheDocument();
+      expect(screen.getByText("Paso anterior")).toBeInTheDocument();
     });
 
     it("should handle step navigation", () => {
       const setStepMock = vi.fn();
       render(<CharacterList {...defaultProps} isMobile={true} step={2} setStep={setStepMock} />);
 
-      fireEvent.click(screen.getByText("Previous step"));
+      fireEvent.click(screen.getByText("Paso anterior"));
 
       expect(setStepMock).toHaveBeenCalledWith(1);
     });
@@ -205,7 +205,7 @@ describe("CharacterList", () => {
     it("should disable Next step when no character selected", () => {
       render(<CharacterList {...defaultProps} isMobile={true} step={1} />);
 
-      const nextButton = screen.getByText("Next step").closest("button");
+      const nextButton = screen.getByText("Siguiente paso").closest("button");
       expect(nextButton).toBeDisabled();
     });
   });
@@ -222,7 +222,7 @@ describe("CharacterList", () => {
 
       render(<CharacterList {...defaultProps} />);
 
-      fireEvent.click(screen.getByRole("button", { name: /retry/i }));
+      fireEvent.click(screen.getByRole("button", { name: /reintentar/i }));
 
       expect(onRetryMock).toHaveBeenCalledTimes(1);
     });
