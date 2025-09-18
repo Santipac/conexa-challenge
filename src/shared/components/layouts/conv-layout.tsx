@@ -1,5 +1,5 @@
 "use client";
-import React, { useCallback, useState } from "react";
+import { useCallback, useState } from "react";
 import { useConversation } from "@elevenlabs/react";
 import OrbAvatar from "../ui/orb";
 import { Button } from "../ui/button";
@@ -16,13 +16,13 @@ export default function ConvLayout({
 }) {
   const isDesktop = useMediaQuery("(min-width: 768px)");
   const [hasError, setHasError] = useState(false);
-  const { characters } = useCharactersList();
+  const { firstCharactersList } = useCharactersList();
   const { setCharacter } = useSelectedCharacters();
 
   const conversation = useConversation({
     clientTools: {
-      selectFirstCharacter: () => setCharacter(characters[0], 1),
-      selectSecondCharacter: () => setCharacter(characters[1], 2),
+      selectFirstCharacter: () => setCharacter(firstCharactersList[0], 1),
+      selectSecondCharacter: () => setCharacter(firstCharactersList[1], 2),
     },
   });
 
@@ -30,7 +30,7 @@ export default function ConvLayout({
     try {
       await navigator.mediaDevices.getUserMedia({ audio: true });
       await conversation.startSession({
-        agentId: "agent_9001k54xcakyfnpvfh2rnmwxjenf", 
+        agentId: "agent_9001k54xcakyfnpvfh2rnmwxjenf",
         // The agentId should be stored in an environment variable, but for your local testing I decided to hardcode it. It's part of a free plan, so don't worry about the costs.
         connectionType: "websocket",
       });

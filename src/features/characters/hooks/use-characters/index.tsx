@@ -2,25 +2,32 @@
 
 import { getCharacters } from "@/features/characters/api/get-characters";
 import { useCharactersList } from "@/shared/stores/use-characters-list";
-import type { Character } from "@/shared/types/character";
 import { useEffect, useRef, useState } from "react";
 
-export function useCharacters() {
+export function useCharacters(step: number = 1) {
   const [isPending, setIsPending] = useState(true);
-  const { characters, setCharacters } = useCharactersList();
+  const {
+    firstCharactersList,
+    secondCharactersList,
+    setFirstCharactersList,
+    setSecondCharactersList
+  } = useCharactersList();
   const [error, setError] = useState<string | null>(null);
 
   const totalPages = useRef(0);
 
   const [page, setPage] = useState(1);
 
+  const characters = step === 1 ? firstCharactersList : secondCharactersList;
+  const setCharacters = step === 1 ? setFirstCharactersList : setSecondCharactersList;
+
   async function onFetchCharacters() {
     try {
       setIsPending(true);
       setError(null);
-      const characters = await getCharacters({ page });
-      setCharacters(characters.results);
-      totalPages.current = characters.info.pages;
+      const charactersData = await getCharacters({ page });
+      setCharacters(charactersData.results);
+      totalPages.current = charactersData.info.pages;
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : 'Ocurrió un error inesperado al obtener los personajes';
       setError(errorMessage);

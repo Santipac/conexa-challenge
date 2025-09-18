@@ -30,7 +30,7 @@ export default function CharacterList({
     handleOnNextPage,
     handleOnPreviousPage,
     onRetry,
-  } = useCharacters();
+  } = useCharacters(step);
 
   function handleOnSelect(character: Character) {
     setCharacter(character, step);

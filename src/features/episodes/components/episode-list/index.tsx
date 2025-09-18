@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Accordion,
   AccordionContent,
@@ -39,8 +39,12 @@ export default function EpisodeList({
 }: EpisodeListProps) {
   const [showAll, setShowAll] = useState(false);
 
+  useEffect(() => {
+    setShowAll(false);
+  }, [episodes]);
+
   const visibleEpisodes = showAll ? episodes : episodes.slice(0, EPISODES_LIMIT);
-  const shouldShowButton = episodes.length > EPISODES_LIMIT;
+  const shouldShowButton = episodes.length > EPISODES_LIMIT && !loading;
 
   const accordionProps = type === "multiple" 
     ? { type: "multiple" as const, defaultValue: defaultValue as string[] }
